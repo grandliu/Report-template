@@ -1,0 +1,6 @@
+// DEMO ONLY: synthetic CCEIR placeholder; not compiled, not executable
+// kernel: rmsnorm_kernel
+// shape: [2, 256]
+module {
+  // Real CCEIR from the test toolchain belongs here.
+}

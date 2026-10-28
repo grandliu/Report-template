@@ -1,0 +1,6 @@
+// DEMO ONLY: synthetic CCEIR placeholder; not compiled, not executable
+// kernel: softcap_fwd_kernel
+// shape: [1024, 1024]
+module {
+  // Real CCEIR from the test toolchain belongs here.
+}

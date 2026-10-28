@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "operators": {
+    "01__binned_copy": {
+      "category": "data_movement"
+    },
+    "02__binned_copy_wgrad": {
+      "category": "data_movement"
+    },
+    "03__silu_forward_backward_diff": {
+      "category": "elementwise"
+    },
+    "04__c_conv_varlen": {
+      "category": "convolution",
+      "case_plan": [
+        {
+          "test": "test_c_conv_varlen_standalone",
+          "axes": [
+            {
+              "names": [
+                "profile"
+              ],
+              "expression": "FWD_PROFILES",
+              "merge": true
+            }
+          ]
+        }
+      ]
+    },
+    "05__fused_ce_forward_backward_diff": {
+      "category": "reduction",
+      "case_plan": [
+        {
+          "test": "test_fused_ce_fwd_bwd_diff_standalone",
+          "fixed_expressions": {
+            "shape": "[BATCH,TARGET_SIZE]"
+          },
+          "fixed": {
+            "dtype": "float32"
+          }
+        }
+      ]
+    },
+    "06_ttest_causal_conv1d_update_state": {
+      "category": "convolution",
+      "case_plan": [
+        {
+          "test": "test_causal_conv1d_update_state_standalone",
+          "axes": [
+            {
+              "names": [
+                "profile"
+              ],
+              "expression": "UPDATE_PROFILES",
+              "merge": true
+            }
+          ]
+        }
+      ]
+    },
+    "07_diffusion_attention": {
+      "category": "attention"
+    },
+    "08_chunk_fwd_o": {
+      "category": "attention"
+    },
+    "09_chunk_bwd_dv_local": {
+      "category": "attention"
+    },
+    "10_test_topp_filter": {
+      "category": "sampling"
+    },
+    "11_test_reject_sampling": {
+      "category": "sampling"
+    },
+    "12_test_magic_reject_sampling": {
+      "category": "sampling"
+    },
+    "13_test_store_lowrank": {
+      "category": "data_movement"
+    },
+    "14_rope_kernel": {
+      "category": "elementwise"
+    },
+    "15__padded_copy": {
+      "category": "data_movement"
+    },
+    "16__padded_copy_wgrad": {
+      "category": "data_movement"
+    },
+    "17_test_gelu": {
+      "category": "elementwise"
+    },
+    "18_test_silu": {
+      "category": "elementwise"
+    },
+    "19_test_swiglu": {
+      "category": "elementwise"
+    },
+    "20_test_paged_decode_gqa": {
+      "category": "attention"
+    },
+    "21_softcap_fwd_kernel": {
+      "category": "elementwise"
+    },
+    "22_fused_matmul_bwd_w_kernel": {
+      "category": "matmul"
+    },
+    "23_test_store_paged_kv": {
+      "category": "data_movement",
+      "case_plan": [
+        {
+          "test": "test_store_paged_kv_forward_diff_standalone",
+          "fixed": {
+            "shape": [
+              85,
+              100,
+              1
+            ],
+            "dtype": "float32"
+          }
+        }
+      ]
+    },
+    "24_solve_tril": {
+      "category": "linear_algebra"
+    },
+    "25_chunk_gated_delta_rule_bwd_dhu": {
+      "category": "scan_recurrence",
+      "case_plan": [
+        {
+          "test": "test_chunk_gated_delta_rule_bwd_dhu_standalone",
+          "fixed": {
+            "B": 2,
+            "T": 128,
+            "H": 2,
+            "HV": 2,
+            "K": 64,
+            "V": 64,
+            "dtype": "bfloat16"
+          }
+        }
+      ]
+    },
+    "26_chunk_bwd_dqkwg": {
+      "category": "attention",
+      "case_plan": [
+        {
+          "test": "test_chunk_bwd_dqkwg_standalone",
+          "fixed": {
+            "B": 2,
+            "T": 128,
+            "H": 2,
+            "HV": 2,
+            "K": 64,
+            "V": 64,
+            "dtype": "bfloat16"
+          }
+        }
+      ]
+    },
+    "27_softcap_bwd_kernel": {
+      "category": "elementwise"
+    },
+    "28__apply_penalties_temp": {
+      "category": "sampling"
+    },
+    "29_causal_conv1d_bwd_kernel": {
+      "category": "convolution"
+    },
+    "30_fused_sigmoid_gating_delta_rule_update_kernel": {
+      "category": "scan_recurrence"
+    },
+    "31_prepare_wy_repr_bwd": {
+      "category": "scan_recurrence"
+    },
+    "32_layer_norm_gated_fwd": {
+      "category": "normalization"
+    },
+    "33_test_residual_add_rmsnorm": {
+      "category": "normalization"
+    },
+    "34_test_residual_add_layernorm": {
+      "category": "normalization"
+    },
+    "36_chunk_gated_delta_rule_fwd_h": {
+      "category": "scan_recurrence"
+    },
+    "37_fused_matmul_bwd_b_kernel": {
+      "category": "reduction"
+    },
+    "38_fused_matmul_bwd_x_kernel": {
+      "category": "matmul"
+    },
+    "39_FA_FP8": {
+      "category": "attention",
+      "case_plan": [
+        {
+          "test": "test_fp8_flash_attention_forward_e4m3fn_opentile",
+          "fixed": {
+            "shape": [
+              128,
+              8,
+              1024,
+              64
+            ],
+            "dtype": "float8_e4m3fn",
+            "base_dtype": "float32",
+            "BM": 64,
+            "BN": 128,
+            "causal": false
+          }
+        }
+      ]
+    },
+    "40_chunk_local_cumsum": {
+      "category": "scan_recurrence"
+    },
+    "41_chunk_scaled_dot_kkt_fwd_no_gate": {
+      "category": "attention"
+    },
+    "42_chunk_scaled_dot_kkt_fwd_gated": {
+      "category": "attention"
+    },
+    "43_layer_norm_gated_bwd": {
+      "category": "normalization"
+    },
+    "44_sdpa": {
+      "category": "attention"
+    },
+    "45__rmsnorm_forward_backward_diff": {
+      "category": "normalization"
+    },
+    "46_test_rmsnorm": {
+      "category": "normalization"
+    },
+    "47_test_layernorm": {
+      "category": "normalization"
+    },
+    "48_test_pos_emb": {
+      "category": "elementwise"
+    },
+    "49__topp_sampling": {
+      "category": "sampling"
+    },
+    "50_recompute_w_u_fwd": {
+      "category": "scan_recurrence"
+    },
+    "extra_tests/fa": {
+      "category": "attention",
+      "execution": {
+        "env": {"OPENTILE_PERF_ALL": "1"},
+        "enable_skipif_reasons": ["tile sweep only runs under perf profiling"]
+      },
+      "case_plan": [
+        {
+          "test": "test_fa_forward_backward",
+          "axes": [
+            {
+              "names": [
+                "idx",
+                "bs",
+                "num_head",
+                "head_dim",
+                "seqlen"
+              ],
+              "expression": "_FA_CASES"
+            }
+          ],
+          "fixed": {
+            "dtype": "bfloat16"
+          }
+        },
+        {
+          "test": "test_fa_fwd_tile",
+          "axes": [
+            {
+              "names": [
+                "case"
+              ],
+              "expression": "_FA_CASES"
+            },
+            {
+              "names": [
+                "bm",
+                "bn"
+              ],
+              "expression": "_FA_TILES"
+            }
+          ],
+          "fixed": {
+            "dtype": "bfloat16"
+          }
+        },
+        {
+          "test": "test_fa_bwd_tile",
+          "axes": [
+            {
+              "names": [
+                "case"
+              ],
+              "expression": "_FA_CASES"
+            },
+            {
+              "names": [
+                "bm",
+                "bn"
+              ],
+              "expression": "_FA_TILES"
+            }
+          ],
+          "fixed": {
+            "dtype": "bfloat16"
+          }
+        }
+      ],
+      "inventory_note": "Full input universe includes all six accuracy shapes and both 6x9 optional performance tile sweeps; modes and repeated launches do not multiply coverage."
+    },
+    "extra_tests/gmm": {
+      "category": "matmul"
+    }
+  }
+}

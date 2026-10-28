@@ -1,0 +1,6 @@
+// DEMO ONLY: synthetic CCEIR placeholder; not compiled, not executable
+// kernel: _gelu_fwd_kernel
+// shape: [128, 128]
+module {
+  // Real CCEIR from the test toolchain belongs here.
+}

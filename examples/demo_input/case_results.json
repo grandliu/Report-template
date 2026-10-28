@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "operator_id": "17_test_gelu",
+      "case_id": "17_test_gelu:90d4a7a6cad1b156",
+      "status": "passed",
+      "mode": "normal",
+      "message": "synthetic demonstration"
+    },
+    {
+      "operator_id": "21_softcap_fwd_kernel",
+      "case_id": "21_softcap_fwd_kernel:4c307cd932b4c6b9",
+      "status": "passed",
+      "mode": "normal",
+      "message": "synthetic demonstration"
+    },
+    {
+      "operator_id": "21_softcap_fwd_kernel",
+      "case_id": "21_softcap_fwd_kernel:cd17e4ed58d7d8ce",
+      "status": "failed",
+      "mode": "normal",
+      "message": "synthetic demonstration"
+    },
+    {
+      "operator_id": "27_softcap_bwd_kernel",
+      "case_id": "27_softcap_bwd_kernel:7e3e7cd47b05c98f",
+      "status": "passed",
+      "mode": "normal",
+      "message": "synthetic demonstration"
+    },
+    {
+      "operator_id": "46_test_rmsnorm",
+      "case_id": "46_test_rmsnorm:b72e2c46b386f293",
+      "status": "passed",
+      "mode": "normal",
+      "message": "synthetic demonstration"
+    },
+    {
+      "operator_id": "46_test_rmsnorm",
+      "case_id": "46_test_rmsnorm:93f2c99d0575505a",
+      "status": "skipped",
+      "mode": "normal",
+      "message": "synthetic demonstration"
+    }
+  ]
+}

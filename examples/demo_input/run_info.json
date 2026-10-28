@@ -1,0 +1,6 @@
+{
+  "run_id": "synthetic-demo",
+  "demo": true,
+  "scope": "testcases",
+  "profiler": "synthetic task duration"
+}
